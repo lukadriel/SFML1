@@ -32,7 +32,7 @@ void World::draw()
 	mWindow.draw(mSceneGraph);
 }
 
-CommandQueue World::getCommandQueue()
+CommandQueue& World::getCommandQueue()
 {
 	return mCommandQueue;
 }
@@ -65,12 +65,12 @@ void World::buildScene()
 	mPlayerCharacter = leader.get();
 	mPlayerCharacter->setPosition(mSpawnPosition);
 	mSceneLayers[Object]->attachChild(std::move(leader));
-	/*std::unique_ptr<Character> leftEscort(new Character(Character::Enemy, mTextures));
+	std::unique_ptr<Character> leftEscort(new Character(Character::Enemy, mTextures));
 	leftEscort->setPosition(-80.f, 50.f);
 	mPlayerCharacter->attachChild(std::move(leftEscort));
 	std::unique_ptr<Character> rightEscort(new Character(Character::Enemy, mTextures));
 	rightEscort->setPosition(80.f, 50.f);
-	mPlayerCharacter->attachChild(std::move(rightEscort));*/
+	mPlayerCharacter->attachChild(std::move(rightEscort));
 }
 
 void World::adaptPlayerPosition()

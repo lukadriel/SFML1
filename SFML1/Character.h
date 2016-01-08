@@ -11,11 +11,10 @@ public:
 		Main,
 		Enemy,
 	};
-	explicit Character(Type type,const TextureHolder& textures);
-	virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
+	explicit Character(Type type,const TextureHolder& textures);	
 	virtual unsigned int getCategory();
 private:
-
+	virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
 private:
 	Type mType;
 	sf::Sprite mSprite;

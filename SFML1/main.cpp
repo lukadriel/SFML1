@@ -1,6 +1,6 @@
 #include "Game.h"
-
-using namespace std;
+#include <iostream>
+#include <stdexcept>
 
 
 

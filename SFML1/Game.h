@@ -31,6 +31,7 @@ private:
 	sf::Sprite mSprite;
 	std::vector<thor::FrameAnimation> animation;
 	thor::Animator<sf::Sprite, std::string> animator;*/
+	static const sf::Time TimePerFrame;
 	sf::RenderWindow mWindow;
 	World mWorld;
 	Player mPlayer;

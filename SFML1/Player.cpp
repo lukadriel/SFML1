@@ -5,9 +5,9 @@ struct CharacterMover
 	{
 
 	}
-	void operator() (SceneNode& node, sf::Time)const
+	void operator() (Character& character, sf::Time)const
 	{
-		Character& character = static_cast<Character&>(node);
+		//Character& character = static_cast<Character&>(node);
 		character.accelerate(velocity);
 	}
 
@@ -33,7 +33,7 @@ void Player::handleEvent(const sf::Event& event, CommandQueue& commands)
 	if (event.type == sf::Event::KeyPressed)
 	{
 		auto found = mKeyBinding.find(event.key.code);
-		if (found!=mKeyBinding.end()&& !isRealTimeAction(found->second))
+		if (found!=mKeyBinding.end() && isRealTimeAction(found->second))
 		{
 			commands.push(mActionBinding[found->second]);
 		}
@@ -94,8 +94,6 @@ bool Player::isRealTimeAction(Action action)
 	case Player::MoveUp:
 	case Player::MoveDown:
 		return true;
-		break;
 	default: return false;
-		break;
 	}
 }

@@ -1,6 +1,6 @@
 #include "Game.h"
 
-
+const sf::Time Game::TimePerFrame = sf::seconds(1.f / 60.f);
 
 Game::Game():mWindow(sf::VideoMode(640,480),"SFML"),mWorld(mWindow),
 mPlayer()
@@ -11,7 +11,7 @@ mPlayer()
 void Game::run()
 {
 	sf::Clock clock;
-	sf::Time const TimePerFrame = sf::seconds(1.f / 60.f);
+	
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (mWindow.isOpen())
 	{

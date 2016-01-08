@@ -9,7 +9,7 @@ public:
 	explicit World(sf::RenderWindow& window);
 	void update(sf::Time dt);
 	void draw();
-	CommandQueue getCommandQueue();
+	CommandQueue& getCommandQueue();
 
 private:
 	void loadTextures();
