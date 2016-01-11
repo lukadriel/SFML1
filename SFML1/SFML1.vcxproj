@@ -167,6 +167,8 @@
     <ClCompile Include="QuadTreeNode.cpp" />
     <ClCompile Include="SceneNode.cpp" />
     <ClCompile Include="SpriteNode.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateStack.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +183,9 @@
     <ClInclude Include="ResourceIdentifier.h" />
     <ClInclude Include="SceneNode.h" />
     <ClInclude Include="SpriteNode.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StatesIdentifiers.h" />
+    <ClInclude Include="StateStack.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>

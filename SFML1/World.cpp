@@ -19,6 +19,7 @@ void World::update(sf::Time dt)
 		mSceneGraph.onCommand(mCommandQueue.pop(),dt);
 	}
 	sf::Vector2f velocity = mPlayerCharacter->getVelocity();
+	//mScrollSpeed = velocity.y;
 	if (velocity.x != 0 && velocity.y != 0)
 		mPlayerCharacter->setVelocity(velocity / std::sqrt(2.f));
 	mPlayerCharacter->accelerate(0.f, mScrollSpeed);
@@ -65,12 +66,12 @@ void World::buildScene()
 	mPlayerCharacter = leader.get();
 	mPlayerCharacter->setPosition(mSpawnPosition);
 	mSceneLayers[Object]->attachChild(std::move(leader));
-	std::unique_ptr<Character> leftEscort(new Character(Character::Enemy, mTextures));
+	/*std::unique_ptr<Character> leftEscort(new Character(Character::Enemy, mTextures));
 	leftEscort->setPosition(-80.f, 50.f);
 	mPlayerCharacter->attachChild(std::move(leftEscort));
 	std::unique_ptr<Character> rightEscort(new Character(Character::Enemy, mTextures));
 	rightEscort->setPosition(80.f, 50.f);
-	mPlayerCharacter->attachChild(std::move(rightEscort));
+	mPlayerCharacter->attachChild(std::move(rightEscort));*/
 }
 
 void World::adaptPlayerPosition()
