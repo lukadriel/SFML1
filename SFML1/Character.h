@@ -1,6 +1,6 @@
 #pragma once
 #include "Entity.h"
-//#include "ResourceIdentifier.h"
+#include "ResourceIdentifier.h"
 #include "ResourceHolder.h"
 
 class Character: public Entity

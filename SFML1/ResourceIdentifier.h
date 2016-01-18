@@ -7,6 +7,8 @@ namespace Textures
 	{
 		Main,
 		Enemy,
+		Ground,
+		TitleScreen,
 	};
 }
 

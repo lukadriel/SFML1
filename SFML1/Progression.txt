@@ -1,0 +1,2 @@
+chapitre 5 page 125(142/296)
+probleme dans l'ancien fichier application.cpp creant un bug. a reverifier plus tard

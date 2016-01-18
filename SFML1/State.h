@@ -1,8 +1,15 @@
 #pragma once
 #include <memory>
-#include <SFML/Graphics.hpp>
 #include "StatesIdentifiers.h"
 #include "ResourceIdentifier.h"
+#include <SFML/System/Time.hpp>
+#include <SFML/Window/Event.hpp>
+
+namespace sf
+{
+	class RenderWindow;
+}
+
 class Player;
 class StateStack;
 class State

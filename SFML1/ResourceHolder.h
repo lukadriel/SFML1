@@ -6,15 +6,15 @@
 #include <cassert>
 #include <SFML/Graphics.hpp>
 
-namespace Textures
-{
-	enum ID
-	{
-		Main,
-		Enemy,
-		Ground
-	};
-}
+//namespace Textures
+//{
+//	enum ID
+//	{
+//		Main,
+//		Enemy,
+//		Ground
+//	};
+//}
 
 template <typename Resource,typename Identifier>
 class ResourceHolder
@@ -85,5 +85,5 @@ void ResourceHolder<Resource, Identifier>::load(Identifier id, const std::string
 }
 
 
-typedef ResourceHolder<sf::Texture, Textures::ID> TextureHolder;
+
 
