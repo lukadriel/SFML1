@@ -65,14 +65,13 @@ void Player::assignKey(Action action, sf::Keyboard::Key key)
 
 sf::Keyboard::Key Player::getAssignedKey(Action action) const
 {
-	for (auto pair : mKeyBinding)
+	for(auto pair: mKeyBinding)
 	{
-		if (pair.second==action)
-		{
+		if (pair.second == action)
 			return pair.first;
-		}
-		return sf::Keyboard::Unknown;
 	}
+
+	return sf::Keyboard::Unknown;
 }
 
 void Player::initializeActions()

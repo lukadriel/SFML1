@@ -1,5 +1,6 @@
 #pragma once
 #include "State.h"
+#include "Container.h"
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
 
@@ -13,7 +14,8 @@ public:
 	
 private:
 	sf::Sprite mBackgroundSprite;
+	GUI::Container mGUIContainer;
 	sf::Text mPausedText;
-	sf::Text mInstructionText;
+	
 };
 

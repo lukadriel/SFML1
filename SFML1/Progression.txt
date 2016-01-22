@@ -1,2 +1,2 @@
-chapitre 5 page 125(142/296)
-probleme dans l'ancien fichier application.cpp creant un bug. a reverifier plus tard
+chapitre 5 page 147(164/296)
+juste finis l'implementation de SettingsState

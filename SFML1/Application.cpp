@@ -6,6 +6,7 @@
 #include "MenuState.h"
 #include "PauseState.h"
 #include "LoadingState.h"
+#include "SettingsState.h"
 
 const sf::Time Application::TimePerFrame = sf::seconds(1.f / 60.f);
 
@@ -21,8 +22,11 @@ Application::Application()
 {
 	mWindow.setKeyRepeatEnabled(false);
 
-	mFonts.load(Fonts::Main, "Fonts/pdark.ttf");
+	mFonts.load(Fonts::Main, "Fonts/Pink Bunny.ttf");
 	mTextures.load(Textures::TitleScreen, "images/zombiz.jpg");
+	mTextures.load(Textures::ButtonNormal, "images/ButtonNormal.png");
+	mTextures.load(Textures::ButtonPressed, "images/ButtonPressed.png");
+	mTextures.load(Textures::ButtonSelected, "images/ButtonSelected.png");
 
 	mStatisticsText.setFont(mFonts.get(Fonts::Main));
 	mStatisticsText.setPosition(5.f, 5.f);
@@ -107,6 +111,7 @@ void Application::registerStates()
 	mStateStack.registerState<GameState>(States::Game);
 	mStateStack.registerState<PauseState>(States::Pause);
 	mStateStack.registerState<LoadingState>(States::Loading);
+	mStateStack.registerState<SettingsState>(States::Settings);
 }
 
 

@@ -9,6 +9,9 @@ namespace Textures
 		Enemy,
 		Ground,
 		TitleScreen,
+		ButtonNormal,
+		ButtonSelected,
+		ButtonPressed,
 	};
 }
 

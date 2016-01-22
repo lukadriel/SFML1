@@ -1,4 +1,7 @@
 #include "Container.h"
+#include <SFML/Window/Event.hpp>
+#include <SFML/Graphics/RenderStates.hpp>
+#include <SFML/Graphics/RenderTarget.hpp>
 namespace GUI
 {
 	Container::Container():mChildren(),mSelectedChild(-1)
@@ -37,7 +40,7 @@ namespace GUI
 			}
 		}
 	}
-	void Container::draw(sf::RenderTarget & target, sf::RenderStates states)
+	void Container::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	{
 		states.transform *= getTransform();
 		for (const Component::Ptr& child : mChildren)

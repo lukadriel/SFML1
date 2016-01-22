@@ -43,6 +43,9 @@ void World::loadTextures()
 	mTextures.load(Textures::Main, "characters/vlad.png");
 	mTextures.load(Textures::Enemy, "characters/cloud.png");
 	mTextures.load(Textures::Ground, "maps/Desert.png");
+	mTextures.load(Textures::ButtonNormal, "images/ButtonNormal.png");
+	mTextures.load(Textures::ButtonPressed, "images/ButtonPressed.png");
+	mTextures.load(Textures::ButtonSelected, "images/ButtonSelected.png");
 }
 
 void World::buildScene()

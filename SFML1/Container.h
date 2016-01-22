@@ -16,7 +16,7 @@ namespace GUI
 		virtual void handleEvent(const sf::Event& event);
 
 	private:
-		virtual void draw(sf::RenderTarget& target, sf::RenderStates states);
+		virtual void draw(sf::RenderTarget & target, sf::RenderStates states) const;
 		bool hasSelection() const;
 		void select(std::size_t index);
 		void selectNext();

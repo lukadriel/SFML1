@@ -13,7 +13,7 @@ TitleState::TitleState(StateStack& stack, Context context)
 	mText.setFont(context.fonts->get(Fonts::Main));
 	mText.setString("Press any key to start");
 	centerOrigin(mText);
-	mText.setPosition(context.window->getView().getSize() / 2.f);
+	mText.setPosition(sf::Vector2f(context.window->getSize() / 2u));
 }
 
 void TitleState::draw()
@@ -40,8 +40,7 @@ bool TitleState::update(sf::Time dt)
 
 bool TitleState::handleEvent(const sf::Event& event)
 {
-	// If any key is pressed, trigger the next screen
-	if (event.type == sf::Event::KeyPressed)
+	if (event.type == sf::Event::KeyReleased)
 	{
 		requestStackPop();
 		requestStackPush(States::Menu);

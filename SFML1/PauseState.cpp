@@ -1,26 +1,46 @@
 #include "PauseState.h"
 #include "ResourceHolder.h"
+#include "Button.h"
 #include "Utility.h"
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/View.hpp>
 
 PauseState::PauseState(StateStack & stack, Context context)
-	:State(stack,context),mBackgroundSprite(),mPausedText(),mInstructionText()
+	:State(stack, context), mBackgroundSprite(),
+	mGUIContainer(),
+	mPausedText()
 {
 	sf::Font& font = context.fonts->get(Fonts::Main);
-	sf::Vector2f viewSize = context.window->getView().getSize();
+	sf::Vector2f windowSize(context.window->getSize());
 
 	mPausedText.setFont(font);
-	mPausedText.setString("Pause");
+	mPausedText.setString("Game Paused");
+	mPausedText.setCharacterSize(70);
 	centerOrigin(mPausedText);
-	mPausedText.setPosition(0.5f * viewSize.x, 0.4f * viewSize.y);
+	mPausedText.setPosition(0.5f*windowSize.x, 0.4f*windowSize.y);
 
-	mInstructionText.setFont(font);
-	mInstructionText.setString("Press backspace to return to main menu");
-	centerOrigin(mInstructionText);
-	mInstructionText.setPosition(0.7f * viewSize.x, 0.6f * viewSize.y);
-	mInstructionText.setCharacterSize(20);
+	auto returnButton = std::make_shared<GUI::Button>(*context.fonts, *context.textures);
+	returnButton->setPosition(0.5f*windowSize.x-100.f, 0.4f*windowSize.y+75.f);
+	returnButton->setText("Return");
+	returnButton->setCallback([this]()
+	{
+		requestStackPop();
+	});
+
+	auto menuButton = std::make_shared<GUI::Button>(*context.fonts, *context.textures);
+	menuButton->setPosition(0.5f*windowSize.x - 100, 0.4f*windowSize.y+ 125.f);
+	menuButton->setText("Back To Menu");
+	menuButton->setCallback([this]()
+	{
+		requestStateClear();
+		requestStackPush(States::Menu);
+	});
+
+	mGUIContainer.pack(returnButton);
+	mGUIContainer.pack(menuButton);
+
+	
 
 }
 
@@ -35,7 +55,8 @@ void PauseState::draw()
 
 	window.draw(backgroundShape);
 	window.draw(mPausedText);
-	window.draw(mInstructionText);
+	window.draw(mGUIContainer);
+	
 }
 
 bool PauseState::update(sf::Time dt)
@@ -45,17 +66,6 @@ bool PauseState::update(sf::Time dt)
 
 bool PauseState::handleEvent(const sf::Event & event)
 {
-	if (event.type != sf::Event::KeyPressed)
-		return false;
-	if (event.key.code==sf::Keyboard::Escape)
-	{
-		requestStackPop();
-	}
-
-	if (event.key.code==sf::Keyboard::BackSpace)
-	{
-		requestStateClear();
-		requestStackPush(States::Menu);
-	}
+	mGUIContainer.handleEvent(event);
 	return false;
 }

@@ -6,15 +6,6 @@
 #include <cassert>
 #include <SFML/Graphics.hpp>
 
-//namespace Textures
-//{
-//	enum ID
-//	{
-//		Main,
-//		Enemy,
-//		Ground
-//	};
-//}
 
 template <typename Resource,typename Identifier>
 class ResourceHolder
