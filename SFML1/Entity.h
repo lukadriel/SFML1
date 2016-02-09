@@ -1,6 +1,18 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "SceneNode.h"
+#include <Thor/Animations.hpp>
+
+enum class Sens
+{
+	Default,
+	Up,
+	Down,
+	Left,
+	Right
+};
+
+
 class Entity:public SceneNode
 {
 public:
@@ -16,6 +28,8 @@ public:
 	void damage(int points);
 	void destroy();
 	virtual bool isDestroyed() const;
+
+	
 
 protected:
 	virtual void updateCurrent(sf::Time dt, CommandQueue& commands);

@@ -1,2 +1,2 @@
-chapitre 5 page 147(164/296)
-juste finis l'implementation de SettingsState
+chapitre 7
+world class, missileGuided, battlefield

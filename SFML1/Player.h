@@ -1,8 +1,10 @@
 #pragma once
 #include <SFML/Window/Event.hpp>
 #include <map>
-#include "CommandQueue.h"
+#include "Command.h"
 #include "Character.h"
+
+class CommandQueue;
 
 class Player
 {
@@ -13,7 +15,15 @@ public:
 		MoveRight,
 		MoveUp,
 		MoveDown,
+		Fire,
+		/*LaunchMissile,*/
 		ActionCount
+	};
+	enum StageStatus
+	{
+		Running,
+		Success,
+		Failure
 	};
 public:
 	Player();
@@ -21,6 +31,9 @@ public:
 	void handleRealTimeInput(CommandQueue& commands);
 	void assignKey(Action action, sf::Keyboard::Key key);
 	sf::Keyboard::Key getAssignedKey(Action action) const;
+	void setStageStatus(StageStatus status);
+	StageStatus getStageStatus() const;
+
 
 private:
 	void initializeActions();
@@ -29,5 +42,6 @@ private:
 private:
 	std::map<sf::Keyboard::Key, Action> mKeyBinding;
 	std::map<Action, Command> mActionBinding;
+	StageStatus mCurrentStageStatus;
 };
 

@@ -12,10 +12,12 @@ SettingsState::SettingsState(StateStack & stack, Context context)
 	:State(stack,context),mGUIContainer()
 {
 	mBackgroundSprite.setTexture(context.textures->get(Textures::TitleScreen));
-	addButtonLabel(Player::MoveLeft, 150.f, "Move Left", context);
-	addButtonLabel(Player::MoveRight, 200.f, "Move Right", context);
-	addButtonLabel(Player::MoveUp, 250.f, "Move Up", context);
-	addButtonLabel(Player::MoveDown, 300.f, "Move Down", context);
+	addButtonLabel(Player::MoveLeft, 50.f, "Move Left", context);
+	addButtonLabel(Player::MoveRight, 100.f, "Move Right", context);
+	addButtonLabel(Player::MoveUp, 150.f, "Move Up", context);
+	addButtonLabel(Player::MoveDown, 200.f, "Move Down", context);
+	addButtonLabel(Player::Fire, 250.f, "Fire", context);
+	/*addButtonLabel(Player::LaunchMissile, 300.f, "Missile", context);*/
 
 	updateLabels();
 

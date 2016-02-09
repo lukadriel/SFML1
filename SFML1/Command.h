@@ -9,12 +9,14 @@ class SceneNode;
 struct Command
 {
 	Command();
-	std::function<void(SceneNode&, sf::Time)> action;
+	typedef std::function<void(SceneNode&, sf::Time)> Action;
 	unsigned int category;
+	Action action;
+	
 };
 
 template <typename GameObject,typename Function>
-std::function<void(SceneNode& node, sf::Time)> derivedAction(Function fn)
+Command::Action derivedAction(Function fn)
 {
 	return [=](SceneNode& node, sf::Time dt)
 	{

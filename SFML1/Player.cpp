@@ -1,25 +1,52 @@
 #include "Player.h"
+#include "CommandQueue.h"
+#include "Character.h"
+#include <string>
+#include <algorithm>
 struct CharacterMover
 {
 	CharacterMover(float vx, float vy) :velocity(vx, vy)
 	{
 
 	}
-	void operator() (Character& character, sf::Time)const
+	void operator() (Character& character, sf::Time dt)const
 	{
 		//Character& character = static_cast<Character&>(node);
-		character.accelerate(velocity);
+		character.accelerate(velocity * character.getMaxSpeed());
+		if (velocity.x < 0)
+		{
+			character.setSens(Sens::Left);
+			//character.animate(Sens::Left);
+		}			
+		else if (velocity.x>0)
+		{
+			character.setSens(Sens::Right);
+			//character.animate(Sens::Right);
+		}			
+		else if (velocity.y < 0)
+		{
+			character.setSens(Sens::Up);
+			//character.animate(Sens::Up);
+		}			
+		else if (velocity.y > 0)
+		{
+			character.setSens(Sens::Down);
+			//character.animate(Sens::Down);
+		}
+			
 	}
 
 	sf::Vector2f velocity;
 };
 
-Player::Player()
+Player::Player():mCurrentStageStatus(Running)
 {
 	mKeyBinding[sf::Keyboard::A] = MoveLeft;
 	mKeyBinding[sf::Keyboard::D] = MoveRight;
 	mKeyBinding[sf::Keyboard::W] = MoveUp;
 	mKeyBinding[sf::Keyboard::S] = MoveDown;
+	mKeyBinding[sf::Keyboard::Space] = Fire;
+	/*mKeyBinding[sf::Keyboard::M] = LaunchMissile;*/
 
 	initializeActions();
 	for (auto& pair : mActionBinding)
@@ -74,14 +101,26 @@ sf::Keyboard::Key Player::getAssignedKey(Action action) const
 	return sf::Keyboard::Unknown;
 }
 
+void Player::setStageStatus(StageStatus status)
+{
+	mCurrentStageStatus = status;
+}
+
+Player::StageStatus Player::getStageStatus() const
+{
+	return mCurrentStageStatus;
+}
+
 void Player::initializeActions()
 {
-	const float playerSpeed = 200.f;
+	const float playerSpeed = 1.f;
 
 	mActionBinding[MoveLeft].action = derivedAction<Character>(CharacterMover(-playerSpeed, 0.f));
 	mActionBinding[MoveRight].action = derivedAction<Character>(CharacterMover(+playerSpeed, 0.f));
 	mActionBinding[MoveUp].action = derivedAction<Character>(CharacterMover( 0.f,-playerSpeed));
 	mActionBinding[MoveDown].action = derivedAction<Character>(CharacterMover(0.f,+playerSpeed ));
+	mActionBinding[Fire].action = derivedAction<Character>([](Character& c, sf::Time) {c.fire(); });
+	/*mActionBinding[LaunchMissile].action = derivedAction<Character>([](Character& c, sf::Time) {c.launchMissile(); });*/
 }
 
 bool Player::isRealTimeAction(Action action)
@@ -92,6 +131,8 @@ bool Player::isRealTimeAction(Action action)
 	case Player::MoveRight:
 	case Player::MoveUp:
 	case Player::MoveDown:
+	case Player::Fire:
+	/*case Player::LaunchMissile:*/
 		return true;
 	default: return false;
 	}
