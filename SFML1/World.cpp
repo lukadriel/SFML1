@@ -256,12 +256,12 @@ void World::addEnemies()
 	// Add enemies to the spawn point container
 	addEnemy(Character::Enemy, 0.f, 550.f);
 	addEnemy(Character::Enemy, -40.f, 590.f);
-	addEnemy(Character::Enemy, 500.f, 550.f);
-	addEnemy(Character::Enemy, -540.f, 590.f);
+	addEnemy(Character::Enemy, 400.f, 550.f);
+	addEnemy(Character::Enemy, -440.f, 590.f);
 	addEnemy(Character::Enemy, +190.f, 1100.f);
 	addEnemy(Character::Enemy, -190.f, 1100.f);
-	addEnemy(Character::Enemy, +590.f, 1100.f);
-	addEnemy(Character::Enemy, -590.f, 1100.f);
+	addEnemy(Character::Enemy, +490.f, 1100.f);
+	addEnemy(Character::Enemy, -490.f, 1100.f);
 	addEnemy(Character::Enemy, -270.f, 1400.f);
 	addEnemy(Character::Enemy, 270.f, 1600.f);
 	addEnemy(Character::Enemy, 70.f, 1400.f);

@@ -13,7 +13,7 @@
 const sf::Time Application::TimePerFrame = sf::seconds(1.f / 60.f);
 
 Application::Application()
-	: mWindow(sf::VideoMode(1280, 768), "States", sf::Style::Close)
+	: mWindow(sf::VideoMode(1280, 768), "Ghost Zone", sf::Style::Close)
 	, mTextures()
 	, mFonts()
 	, mPlayer()
@@ -23,12 +23,16 @@ Application::Application()
 	, mStatisticsNumFrames(0)
 {
 	mWindow.setKeyRepeatEnabled(false);
-
+	sf::Image icon;
+	icon.loadFromFile("images/icon.png");
+	mWindow.setIcon(100, 100, icon.getPixelsPtr());
 	mFonts.load(Fonts::Main, "Fonts/Pink Bunny.ttf");
 	mTextures.load(Textures::TitleScreen, "images/Titre.png");
 	mTextures.load(Textures::ButtonNormal, "images/ButtonNormal.png");
 	mTextures.load(Textures::ButtonPressed, "images/ButtonPressed.png");
 	mTextures.load(Textures::ButtonSelected, "images/ButtonSelected.png");
+	mTextures.load(Textures::CreditSFML, "images/SFML.png");
+	mTextures.load(Textures::CreditTILED, "images/Tiled.png");
 
 	mStatisticsText.setFont(mFonts.get(Fonts::Main));
 	mStatisticsText.setPosition(5.f, 5.f);

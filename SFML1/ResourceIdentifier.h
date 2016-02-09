@@ -23,6 +23,8 @@ namespace Textures
 		Tileset,
 		Wall,
 		End,
+		CreditSFML,
+		CreditTILED,
 	};
 }
 
